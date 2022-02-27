@@ -1,0 +1,131 @@
+// Navbar avec logo
+.nav-bar
+    opacity: 1
+    height: 80px
+    width: 100%
+    flex: 1 0 auto
+    display: flex
+    justify-content: space-between
+    align-items: center
+    transition: 0.4s
+    background-color: $color4
+
+    // logo
+    .logo
+        margin-left: 20px
+        height: 50px
+        // background: url(img/logo.png) no-repeat 50% 50%
+        // background-size: cover
+        transition: 0.4s
+        vertical-align: middle
+        @extend .flex-center
+        // font-size: 40px
+        // font-family: $font3
+        // color: $color3
+        // text-transform: uppercase
+        // text-shadow: 2px 2px 0 $color2, 4px 4px 0px $color3, 6px 6px 4px $color3
+
+        // logo le cercle after
+        // &::before
+        //     content: ""
+        //     width: 12px
+        //     height: 12px
+        //     position: absolute
+        //     left: 223px
+        //     top: 47px
+        //     background-color: $color3
+        //     border-radius: 50%
+        img
+            width: 180px
+    .nav-menu
+        list-style-type: none
+        display: flex
+        margin-right: 2rem
+        gap: 25px
+
+        .nav-item
+            display: inline
+            // position: relative
+            cursor: pointer
+            // padding: 0 1rem
+            font-size: 25px
+            transition: 0.3s
+            border-radius: 8px
+
+.nav-link
+    // width: 3rem
+    color: $color2
+    text-align: center
+    transition: 0.3s ease-out
+    position: relative
+
+    &::after
+        content: ""
+        display: block
+        position: absolute
+        left: 50%
+        top: 35px
+        transform: translateX(-50%) scale(0)
+        height: 3px
+        width: 90%
+        transition: 0.3s ease
+        background-color: $color3
+        border-radius: 8px
+        // text-shadow: 4px 4px 4px $color3
+
+    &:hover::after
+        transform: translateX(-50%) scale(1)
+        color: $color3
+
+.hamburger
+    display: none
+    cursor: pointer
+    // background-color: $color3
+    margin-right: 2rem
+    &__bar
+        background-color: $color2
+        display: block
+        width: 28px
+        height: 4px
+        margin: 5px auto
+        -webkit-transition: all 0.3s ease-in-out
+        transition: all 0.3s ease-in-out
+        border-radius: 8px
+
+@media screen and (max-width:768px)
+    .hamburger
+        display: block
+        &:active
+            transform: scale(0.97)
+        // background-color: $color3
+
+    .hamburger.active .hamburger__bar:nth-child(2)
+        opacity: 0
+    .hamburger.active .hamburger__bar:nth-child(1)
+        transform: translateY(8px) rotate(45deg)
+    .hamburger.active .hamburger__bar:nth-child(3)
+        transform: translateY(-8px) rotate(-45deg)
+
+    .nav-menu
+        margin-right: 0
+        position: fixed
+        background-color: $color4
+        opacity: 0.98
+        left: -100%
+        top: 70px
+        gap: 0
+        flex-direction: column
+        width: 100%
+        text-align: center
+        transition: 0.3s
+        z-index: 1000
+
+    .nav-item
+        margin: 10px 0
+        opacity: 0.95
+
+    .nav-menu.active
+        left: 0
+
+    // .nav-link.active
+    //     color: $color3

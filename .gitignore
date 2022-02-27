@@ -1,0 +1,9 @@
+.venv
+.vscode
+.env
+db.sqlite3
+*.pyc
+data
+media
+fonts
+node_modules

@@ -1,0 +1,60 @@
+footer
+    width: 100%
+    height: 400px
+    display: grid
+    grid-template-rows: 85% 15%
+    padding: 0
+    // background-color: $color4
+
+    .footer-content
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+
+        .footer-content-box
+            width: 300px
+            height: auto
+
+            .footer-logo
+                width: 300px
+                @extend .flex-center
+
+                img
+                    width: 80%
+                    height: auto
+
+            ul
+                list-style-type: none
+                display: flex
+                justify-content: center
+                align-items: center
+                margin-top: 5px
+                a
+                    display: block
+                    img
+                        width: 30px
+                        height: 30px
+                    .ml
+                        margin: 0 20px
+
+    hr
+        margin: 0.1rem auto
+        width: 70%
+        height: 0.1rem
+        background-color: $color5
+        border: none
+        outline: none
+
+    .footer-bottom
+        display: flex
+        justify-content: center
+        align-items: center
+        color: $color5
+        height: 3rem
+        // background-color: $color4
+        a
+            transition: 0.5s
+            color: $color5
+            &:hover
+                color: $color3

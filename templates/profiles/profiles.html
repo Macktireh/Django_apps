@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} Home {% endblock title %}
+
+
+{% block style %}
+<link rel="shortcut icon" href=" {% static 'profiles/css/favicon.png' %} " type="image/x-icon">
+<link rel="stylesheet" href=" {% static 'profiles/css/style.css' %} " />
+{% endblock style %}
+
+
+{% block content %}
+<!-- Navbar -->
+<nav class="nav-bar">{% include 'components/navbar.html' %}</nav>
+
+<main class="main-home">
+  <h1>Hello depuis Profiles</h1>
+</main>
+
+<!-- Footer -->
+<footer>{% include 'components/footer.html' %}</footer>
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}
