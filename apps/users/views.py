@@ -3,18 +3,18 @@ from django.shortcuts import render
 
 
 def sign_up(request):
-    template = "accounts/sign_up.html"
+    template = "users/sign_up.html"
     context = {}
     return render(request, template, context=context)
     
 
 def sing_in(request):
-    template = "accounts/sign_in.html"
+    template = "users/sign_in.html"
     context = {}
     return render(request, template, context=context)
 
 
 def user_logout(request):
-    template = "accounts/logout.html"
+    template = "users/logout.html"
     context = {}
     return render(request, template, context=context)

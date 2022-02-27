@@ -42,7 +42,7 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     'apps.home',
-    'apps.accounts',
+    'apps.users',
     'apps.profiles',
     'apps.comments',
 ]
