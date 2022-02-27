@@ -5,10 +5,22 @@
 </a>
 
 <ul class="nav-menu">
-  <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-  <li class="nav-item"><a class="nav-link" href="{% url 'sign_in' %}">S'identifier</a></li>
-  <li class="nav-item"><a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a></li>
-  <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Déconnexion</a></li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'home' %}">Home</a>
+  </li>
+
+  {% if user.is_authenticated %}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+  </li>
+  {% else %}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'sign_in' %}">S'identifier</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a>
+  </li>
+  {% endif %}
 </ul>
 
 <div class="hamburger">

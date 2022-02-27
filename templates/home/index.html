@@ -16,7 +16,15 @@
 <nav class="nav-bar">{% include 'components/navbar.html' %}</nav>
 
 <main class="main-home">
-  <h1>Hello depuis Home</h1>
+  <div>
+    {% if user.is_authenticated %}
+    <h2>Salut {{ user.first_name }} 👋 </h2>
+    <br>
+    <h2>On est content de te revoir aujourd'hui !</h2>
+    {% else %}
+    <h2>Vous n'êtes pas connecter</h2>
+    {% endif %}
+  </div>
 </main>
 
 

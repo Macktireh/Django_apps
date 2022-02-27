@@ -121,26 +121,26 @@ inputs.forEach((input) => {
   });
 });
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
 
-  if (firstname && email && password && confirmPass) {
-    const data = {
-      firstname,
-      email,
-      password,
-    };
-    console.log(data);
+//   if (firstname && email && password && confirmPass) {
+//     const data = {
+//       firstname,
+//       email,
+//       password,
+//     };
+//     console.log(data);
 
-    inputs.forEach((input) => (input.value = ""));
-    // progressBar.classList = "";
+//   //   inputs.forEach((input) => (input.value = ""));
+//   //   // progressBar.classList = "";
 
-    firstname = null;
-    email = null;
-    password = null;
-    confirmPass = null;
-    alert("Inscription validée !");
-  } else {
-    alert("veuillez remplir correctement les champs");
-  }
-});
+//   //   firstname = null;
+//   //   email = null;
+//   //   password = null;
+//   //   confirmPass = null;
+//   //   alert("Inscription validée !");
+//   // } else {
+//   //   alert("veuillez remplir correctement les champs");
+//   }
+// });

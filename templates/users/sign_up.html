@@ -14,10 +14,12 @@
   <div class="form-container">
     <h1>S'inscrire</h1>
     <form method="post">
+      {% csrf_token %}
 
       <div class="firstname-container">
         <div class="txt_field">
-          <input type="text" required id="firstname" class="form-control" autocomplete="off">
+          <!-- <input type="text" required id="firstname" class="form-control" autocomplete="off"> -->
+          {{ user_form.first_name }}
           <span class="span-border-bottom"></span>
           <label>Prénom</label>
         </div>
@@ -26,7 +28,8 @@
 
       <div class="lastname-container">
         <div class="txt_field">
-          <input type="text" required id="lastname" class="form-control" autocomplete="off">
+          <!-- <input type="text" required id="lastname" class="form-control" autocomplete="off"> -->
+          {{ user_form.last_name }}
           <span class="span-border-bottom"></span>
           <label>Non</label>
         </div>
@@ -35,7 +38,8 @@
 
       <div class="email-container">
         <div class="txt_field">
-          <input type="text" required id="email" class="form-control" autocomplete="off">
+          <!-- <input type="text" required id="email" class="form-control" autocomplete="off"> -->
+          {{ user_form.email }}
           <span class="span-border-bottom"></span>
           <label>Email</label>
         </div>
@@ -44,7 +48,8 @@
 
       <div class="password-container">
         <div class="txt_field">
-          <input type="password" required id="password" class="form-control" autocomplete="off">
+          <!-- <input type="password" required id="password" class="form-control" autocomplete="off"> -->
+          {{ user_form.password }}
           <span class="span-border-bottom"></span>
           <label>Mot de passe</label>
           <!-- <p id="progress-bar"></p> -->
@@ -54,7 +59,8 @@
 
       <div class="confirm-container">
         <div class="txt_field">
-          <input type="password" required id="confirm" class="form-control" autocomplete="off">
+          <!-- <input type="password" required id="confirm" class="form-control" autocomplete="off"> -->
+          {{ user_form.confirm_password }}
           <span class="span-border-bottom"></span>
           <label>Confirmer mot de passe</label>
         </div>

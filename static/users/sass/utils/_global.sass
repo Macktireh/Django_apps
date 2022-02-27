@@ -1,12 +1,31 @@
 body
-    background-color: $color2
-    color: $color1
-    min-height: 100vh
-    // overflow: hidden
-    background: linear-gradient(120deg, #2980b9, #8e44ad)
-    @extend .flex-center
-    font-family: $font1
+  background-color: $color2
+  color: $color1
+  min-height: 100vh
+  background: linear-gradient(120deg, #2980b9, #8e44ad)
+  @extend .flex-center
+  font-family: $font1
 
 main
-    // @include position-abs(50%, 45%, -50%, -50%)
-    @extend .flex-center
+  @extend .flex-center
+
+.message-success
+  margin: 1rem
+  padding: 1rem
+  border: 1px solid green
+  border-radius: 10px
+  color: green
+
+.message-warning
+  margin: 1rem
+  padding: 1rem
+  border: 1px solid orange
+  border-radius: 10px
+  color: orange
+
+.message-error
+  margin: 1rem
+  padding: 1rem
+  border: 1px solid red
+  border-radius: 10px
+  color: red

@@ -13,17 +13,29 @@
 <main>
   <div class="form-container">
     <h1>S'identifier</h1>
-    <form method="post">
+
+    {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="message-{{ message.tags }}" {% endif %}>
+      <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
       <div class="txt_field">
-        <input type="text" required autocomplete="off">
+        <input type="text" name="email" required autocomplete="off">
         <span class="span-border-bottom"></span>
         <label>Email</label>
       </div>
+
       <div class="txt_field">
-        <input type="password" required autocomplete="off">
+        <input type="password" name="password" required autocomplete="off">
         <span class="span-border-bottom"></span>
         <label>Mot de passe</label>
       </div>
+
       <a href="#" class="pass">Mot de passe oublié ?</a>
       <input type="submit" value="Se connecter">
       <div class="sign_link">
@@ -34,7 +46,6 @@
   </div>
 </main>
 {% endblock content %}
-
 
 
 {% block js %}
