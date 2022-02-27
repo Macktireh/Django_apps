@@ -18,7 +18,10 @@ const errorDisplay = (tag, message, valid) => {
 
 const firstnamechecker = (value) => {
   if (value.length > 0 && (value.length < 2 || value.length > 50)) {
-    errorDisplay("firstname", "Le prénom doit faire entre 2 et 50 caractères");
+    errorDisplay(
+      "firstname",
+      "Le prénom doit contenir entre 2 et 50 caractères"
+    );
     firstname = null;
   } else if (!value.match(/^[a-zA-Z -]*$/)) {
     errorDisplay(
@@ -34,7 +37,7 @@ const firstnamechecker = (value) => {
 
 const lastnamechecker = (value) => {
   if (value.length > 0 && (value.length < 2 || value.length > 50)) {
-    errorDisplay("lastname", "Le nom doit faire entre 2 et 50 caractères");
+    errorDisplay("lastname", "Le nom doit contenir entre 2 et 50 caractères");
     lastname = null;
   } else if (!value.match(/^[a-zA-Z -]*$/)) {
     errorDisplay(
@@ -49,7 +52,7 @@ const lastnamechecker = (value) => {
 };
 
 const emailChecker = (value) => {
-  if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
+  if (!value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/)) {
     errorDisplay("email", "Le mail n'est pas valide");
     email = null;
   } else {
