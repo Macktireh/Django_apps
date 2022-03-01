@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user_model, authenticate, login, logout
 
-from apps.users.forms import Sign_UpForm, Sign_InForm
+from apps.users.forms import Sign_UpForm
 
 User = get_user_model()
 
@@ -14,10 +14,10 @@ def sign_up(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            messages.success(request, 'Votre compte à été bien enregistrer')
+            messages.success(request, 'Votre compte à été bien enregistrer.')
             return redirect('sign_in')
         else:
-            messages.error(request, 'Merci de bien remplir les informations correctement')
+            messages.error(request, 'Merci de bien remplir les informations correctement.')
     else:
         user_form = Sign_UpForm()
         
@@ -30,28 +30,20 @@ def sign_up(request):
 
 def sign_in(request):
     if request.method == 'POST':
-        # signin_form = Sign_InForm(request.POST or None)
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(username=email, password=password)
-        # print('user:', user)
+        user = authenticate(email=email, password=password)
         if user:
             if user.is_active:
                 login(request, user)
-                # messages.success(request, 'Bonjour , nous content te revoir :)')
                 return redirect('home')
             else:
                 messages.warning(request, "Votre n'est pas encore activer.")
-
         else:
-            messages.error(request, "ERREUR : votre email ou votre mot de passe est incorrect")
-    # else:
-    #     signin_form = Sign_InForm()
+            messages.error(request, "ERREUR : votre email ou votre mot de passe est incorrect.")
         
     template = "users/sign_in.html"
-    context = {
-        # 'signin_form': signin_form
-    }
+    context = {}
     return render(request, template, context=context)
 
 

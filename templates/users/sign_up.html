@@ -22,7 +22,7 @@
       {% for field in user_form %}
       {% for error in field.errors %}
       <div class="alert alert-danger">
-        <strong>{{ error|escape }}</strong>
+        <p>{{ error|escape }}</p>
       </div>
       {% endfor %}
       {% endfor %}
@@ -31,57 +31,48 @@
     {% endfor %}
     {% endif %}
 
-
-    <form method="post">
-      {% csrf_token %}
-
+    <form method="post">{% csrf_token %}
       <div class="firstname-container">
         <div class="txt_field">
-          <!-- <input type="text" required id="firstname" class="form-control" autocomplete="off"> -->
           {{ user_form.first_name }}
           <span class="span-border-bottom"></span>
-          <label>Prénom</label>
+          <label>Prénom *</label>
         </div>
         <span class="content-error"></span>
       </div>
 
       <div class="lastname-container">
         <div class="txt_field">
-          <!-- <input type="text" required id="lastname" class="form-control" autocomplete="off"> -->
           {{ user_form.last_name }}
           <span class="span-border-bottom"></span>
-          <label>Non</label>
+          <label>Non *</label>
         </div>
         <span class="content-error"></span>
       </div>
 
       <div class="email-container">
         <div class="txt_field">
-          <!-- <input type="text" required id="email" class="form-control" autocomplete="off"> -->
           {{ user_form.email }}
           <span class="span-border-bottom"></span>
-          <label>Email</label>
+          <label>Email *</label>
         </div>
         <span class="content-error"></span>
       </div>
 
       <div class="password-container">
         <div class="txt_field">
-          <!-- <input type="password" required id="password" class="form-control" autocomplete="off"> -->
           {{ user_form.password }}
           <span class="span-border-bottom"></span>
-          <label>Mot de passe</label>
-          <!-- <p id="progress-bar"></p> -->
+          <label>Mot de passe *</label>
         </div>
         <span class="content-error"></span>
       </div>
 
       <div class="confirm-container">
         <div class="txt_field">
-          <!-- <input type="password" required id="confirm" class="form-control" autocomplete="off"> -->
           {{ user_form.confirm_password }}
           <span class="span-border-bottom"></span>
-          <label>Confirmer mot de passe</label>
+          <label>Confirmer mot de passe *</label>
         </div>
         <span class="content-error"></span>
       </div>
