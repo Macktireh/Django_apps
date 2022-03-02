@@ -36,7 +36,7 @@
         <label>Mot de passe</label>
       </div>
 
-      <a href="#" class="pass">Mot de passe oublié ?</a>
+      <a href="{% url 'reset_password' %}" class="pass">Mot de passe oublié ?</a>
       <input type="submit" value="Se connecter">
       <div class="sign_link">
         Vous n'avez pas de compte ? <a href="{% url 'sign_up' %}">S'inscrire</a>

@@ -83,7 +83,7 @@ class Sign_UpForm(forms.ModelForm):
         password = self.cleaned_data.get('password')
         print('password :', password)
         if not self.signup_password_validation(password):
-            raise forms.ValidationError(_("Le champ mot de passe doit contenir: minimum de 8 caractères, une majuscule, un chiffre et un caractère spécial !"))
+            raise forms.ValidationError(_("Le champ mot de passe doit contenir: minimum de 8 caractères, au moins majuscule et minuscule, au moins chiffre et un caractère spécial."))
         return password
 
     def clean(self, *args, **kwargs):
