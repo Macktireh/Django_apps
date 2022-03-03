@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.forms import PasswordResetForm
 
 from apps.users.models import CustomUser
 
@@ -25,19 +26,19 @@ class CustomUserChangeForm(UserChangeForm):
         
 
 class Sign_UpForm(forms.ModelForm):
-    first_name = forms.CharField(min_length=2, required=True, widget=forms.TextInput(
+    first_name = forms.CharField(label='Prénom', min_length=2, required=True, widget=forms.TextInput(
         attrs={'id': 'firstname', 'class': 'form-control', 'autocomplete': 'off'}))
     
-    last_name = forms.CharField(min_length=2, required=True, widget=forms.TextInput(
+    last_name = forms.CharField(label='Nom', min_length=2, required=True, widget=forms.TextInput(
         attrs={'id': 'lastname', 'class': 'form-control', 'autocomplete': 'off'}))
     
-    email = forms.EmailField(required=True, widget=forms.EmailInput(
+    email = forms.EmailField(label='Email', required=True, widget=forms.EmailInput(
         attrs={'id': 'email', 'class': 'form-control', 'autocomplete': 'off'}))
     
-    password = forms.CharField(required=True, widget=forms.PasswordInput(
+    password = forms.CharField(label='Mot de pass', required=True, widget=forms.PasswordInput(
         attrs={'id': 'password', 'class': 'form-control', 'autocomplete': 'off'}))
     
-    confirm_password = forms.CharField(required=True, widget=forms.PasswordInput(
+    confirm_password = forms.CharField(label='Confimer mot de pass', required=True, widget=forms.PasswordInput(
         attrs={'id': 'confirm', 'class': 'form-control', 'autocomplete': 'off'}))
     
     class Meta:
@@ -95,3 +96,14 @@ class Sign_UpForm(forms.ModelForm):
         if password and confirm_password:
             if password != confirm_password:
                 raise forms.ValidationError(_("Les mots de passe ne correspondent pas"))
+
+
+
+
+class CustomEmailValidationOnForgotPassword(PasswordResetForm):
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not User.objects.filter(email__iexact=email, is_active=True).exists():
+            raise ValidationError("Email invalid!")
+
+        return email

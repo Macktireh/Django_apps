@@ -12,7 +12,9 @@
 {% block content %}
 <main>
   <div class="form-container">
-    <h1>S'inscrire</h1>
+    <div class="title-form">
+      <h1>S'inscrire</h1>
+    </div>
 
     {% if messages %}
     {% for message in messages %}
@@ -32,50 +34,17 @@
     {% endif %}
 
     <form method="post">{% csrf_token %}
-      <div class="firstname-container">
-        <div class="txt_field">
-          {{ user_form.first_name }}
-          <span class="span-border-bottom"></span>
-          <label>Prénom *</label>
-        </div>
-        <span class="content-error"></span>
-      </div>
 
-      <div class="lastname-container">
+      {% for field in user_form %}
+      <div class="{{ field.name }}-container">
         <div class="txt_field">
-          {{ user_form.last_name }}
+          {{ field }}
           <span class="span-border-bottom"></span>
-          <label>Non *</label>
+          <label>{{ field.label }} *</label>
         </div>
         <span class="content-error"></span>
       </div>
-
-      <div class="email-container">
-        <div class="txt_field">
-          {{ user_form.email }}
-          <span class="span-border-bottom"></span>
-          <label>Email *</label>
-        </div>
-        <span class="content-error"></span>
-      </div>
-
-      <div class="password-container">
-        <div class="txt_field">
-          {{ user_form.password }}
-          <span class="span-border-bottom"></span>
-          <label>Mot de passe *</label>
-        </div>
-        <span class="content-error"></span>
-      </div>
-
-      <div class="confirm-container">
-        <div class="txt_field">
-          {{ user_form.confirm_password }}
-          <span class="span-border-bottom"></span>
-          <label>Confirmer mot de passe *</label>
-        </div>
-        <span class="content-error"></span>
-      </div>
+      {% endfor %}
 
       <input type="submit" value="S'inscrire">
       <div class="sign_link">
