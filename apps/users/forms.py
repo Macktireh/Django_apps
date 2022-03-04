@@ -38,7 +38,7 @@ class Sign_UpForm(forms.ModelForm):
     password = forms.CharField(label='Mot de pass', required=True, widget=forms.PasswordInput(
         attrs={'id': 'password', 'class': 'form-control', 'autocomplete': 'off'}))
     
-    confirm_password = forms.CharField(label='Confimer mot de pass', required=True, widget=forms.PasswordInput(
+    confirm_password = forms.CharField(label='Confimer le mot de pass', required=True, widget=forms.PasswordInput(
         attrs={'id': 'confirm', 'class': 'form-control', 'autocomplete': 'off'}))
     
     class Meta:
@@ -97,13 +97,3 @@ class Sign_UpForm(forms.ModelForm):
             if password != confirm_password:
                 raise forms.ValidationError(_("Les mots de passe ne correspondent pas"))
 
-
-
-
-class CustomEmailValidationOnForgotPassword(PasswordResetForm):
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if not User.objects.filter(email__iexact=email, is_active=True).exists():
-            raise ValidationError("Email invalid!")
-
-        return email

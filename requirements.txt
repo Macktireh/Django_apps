@@ -1,0 +1,7 @@
+asgiref==3.5.0
+Django==3.2.12
+python-dotenv==0.19.2
+pytz==2021.3
+six==1.16.0
+sqlparse==0.4.2
+typing_extensions==4.1.1

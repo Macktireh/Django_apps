@@ -77,16 +77,18 @@ body {
 }
 .form-container .title-form .p-info {
   margin-top: 10px;
+  padding: 1rem;
 }
-.form-container form {
+
+form {
   padding: 0 40px;
 }
-.form-container form .txt_field {
+form .txt_field {
   position: relative;
   border-bottom: 2px solid #adadad;
   margin: 30px 0 10px;
 }
-.form-container form .txt_field input {
+form .txt_field input {
   width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -95,7 +97,7 @@ body {
   background: none;
   outline: none;
 }
-.form-container form .txt_field label {
+form .txt_field label {
   position: absolute;
   top: 50%;
   left: 5px;
@@ -105,7 +107,7 @@ body {
   pointer-events: none;
   transition: 0.5s;
 }
-.form-container form .txt_field .span-border-bottom::before {
+form .txt_field .span-border-bottom::before {
   content: "";
   position: absolute;
   top: 40px;
@@ -115,16 +117,16 @@ body {
   background: #2691d9;
   transition: 0.5s;
 }
-.form-container form .txt_field input:focus ~ label,
-.form-container form .txt_field input:valid ~ label {
+form .txt_field input:focus ~ label,
+form .txt_field input:valid ~ label {
   top: -5px;
   color: #2691d9;
 }
-.form-container form .txt_field input:focus ~ .span-border-bottom::before,
-.form-container form .txt_field input:valid ~ .span-border-bottom::before {
+form .txt_field input:focus ~ .span-border-bottom::before,
+form .txt_field input:valid ~ .span-border-bottom::before {
   width: 100%;
 }
-.form-container form .txt_field p {
+form .txt_field p {
   background: red;
   width: 33%;
   height: 6px;
@@ -133,7 +135,7 @@ body {
   visibility: hidden;
   transition: 0.3s;
 }
-.form-container form .content-error {
+form .content-error {
   margin-bottom: 20px;
   display: block;
   font-size: 0.8rem;
@@ -142,21 +144,21 @@ body {
   transition: 0.3s;
   color: red;
 }
-.form-container form .error .txt_field span {
+form .error .txt_field span {
   background-color: red;
 }
-.form-container form .error .content-error {
+form .error .content-error {
   visibility: visible;
   opacity: 1;
   color: red;
 }
-.form-container form .pass {
+form .pass {
   color: #666666;
 }
-.form-container form .pass:hover {
+form .pass:hover {
   text-decoration: underline;
 }
-.form-container form input[type=submit] {
+form input[type=submit] {
   margin: 15px 0 5px;
   width: 100%;
   height: 50px;
@@ -169,37 +171,70 @@ body {
   cursor: pointer;
   outline: none;
 }
-.form-container form input[type=submit]:hover {
+form input[type=submit]:hover {
   border-color: #2691d9;
   transition: 0.5s;
 }
-.form-container form .sign_link {
+form .sign_link {
   margin: 15px 0;
   text-align: center;
   font-size: 16px;
   color: #666666;
 }
-.form-container form .sign_link a {
+form .sign_link a {
   color: #2691d9;
   text-decoration: none;
 }
-.form-container form .sign_link a:hover {
+form .sign_link a:hover {
   text-decoration: underline;
 }
-.form-container form .progressRed {
+form .progressRed {
   background: red;
   width: 33%;
   visibility: visible;
 }
-.form-container form .progressBlue {
+form .progressBlue {
   background: #2691d9;
   width: 67%;
   visibility: visible;
 }
-.form-container form .progressGreen {
+form .progressGreen {
   width: 100%;
   background: #2691d9;
   visibility: visible;
+}
+
+.sign_link {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
+}
+.sign_link a {
+  color: #2691d9;
+  text-decoration: none;
+}
+.sign_link a:hover {
+  text-decoration: underline;
+}
+
+.form-container-pass {
+  width: 75%;
+  background: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #2691d9;
+  margin: 1.5rem 0;
+}
+
+.title-pass {
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid silver;
+}
+.title-pass .p-info {
+  text-align: left;
+  margin-top: 10px;
+  padding: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
