@@ -2,17 +2,30 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.core.mail import send_mail, EmailMessage
+from django.urls import reverse
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, force_text
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 
 from apps.users.forms import Sign_UpForm
-from apps.users.token import generateToken
+from apps.users.token import generate_token
 from config.settings import EMAIL_HOST_USER
 
 User = get_user_model()
 
+def send_action_email(user, request):
+    current_site = get_current_site(request)
+    email_subject_activate = f"Confirmer votre adresse mail de votre compte sur {current_site}"
+    email_body_activate = render_to_string('users/actiavte.html', {
+            'user': user,
+            'domain': current_site,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': generate_token.make_token(user)
+        }
+    )
+    email = EmailMessage(subject=email_subject_activate, body=email_body_activate, from_email=EMAIL_HOST_USER, to=[user.email])
+    email.send()
 
 def sign_up(request):
     if request.method == 'POST':
@@ -20,10 +33,8 @@ def sign_up(request):
         if user_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
-            user.is_active = False
-            user.save() 
-            messages.success(request, "Votre compte à été bien enregistrer. \nVous recevez pour confirmer votre email.")
-            
+            user.save()
+            messages.success(request, "Votre compte à été bien avec succès. Vous recevez un email pour confirmer votre adresse email.")
             current_site = get_current_site(request)
             
             # mail de bienvenue
@@ -34,23 +45,12 @@ def sign_up(request):
             send_mail(subject_welcome, message_welcome, from_email_welcome, to_email_welcome, fail_silently=False)
             
             # mail d'activation du compte
-            subject_confirm_email = f"Confirmer votre adresse mail de votre compte sur {current_site}"
-            message_confirm_email = render_to_string('users/confirm_email.html', {
-                'name': user.first_name,
-                'domain': current_site,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'tokens': generateToken.make_token(user)
-            })
-            email_send = EmailMessage(subject_confirm_email, message_confirm_email, EMAIL_HOST_USER, [user.email])
-            email_send.fail_silently = False
-            email_send.send()
-             
+            send_action_email(user, request)
             return redirect('sign_in')
         else:
             messages.error(request, "Merci de bien remplir les informations correctement.")
     else:
         user_form = Sign_UpForm()
-        
     template = 'users/sign_up.html'
     context = {
         'user_form': user_form,
@@ -64,17 +64,18 @@ def sign_in(request):
         password = request.POST.get('password')
         user = authenticate(email=email, password=password)
         if user:
-            if user.is_active:
+            if not user.is_email_verified:
+                messages.warning(request, "Merci de confirmer d'abord votre adresse email.")
+                return redirect('sign_in')
+            else:
                 login(request, user)
                 return redirect('home')
-            else:
-                messages.warning(request, "Votre n'est pas encore activer.")
+        elif User.objects.filter(email=email).exists():
+            messages.error(request, "ERREUR : Votre mot de passe est incorrect.")
         else:
-            messages.error(request, "ERREUR : votre email ou votre mot de passe est incorrect.")
-        
+            messages.error(request, "ERREUR : Il semble que vous n'avez pas compte avec cette adresse email")
     template = 'users/sign_in.html'
-    context = {}
-    return render(request, template, context=context)
+    return render(request, template)
 
 
 def user_logout(request):
@@ -82,17 +83,17 @@ def user_logout(request):
     return redirect('home')
 
 
-def activated_confirm_eamil_token(request, uidb64, token):
+def activate_user(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+    except Exception as e:
         user = None
-    
-    if user is not None and generateToken.check_token(user, token):
-        user.is_active = True
+    if user and generate_token.check_token(user, token):
+        user.is_email_verified = True
         user.save()
-        messages.success(request, "Votre compte à  été bien activer")
-        return redirect('sign_in')
-    else:
-        messages.error(request, "Malhereussement votre compte n'a été activer")
+        messages.success(request, "Votre email est vérifié avec succès. Vous pouvez vous connecter.")
+        return redirect(reverse('sign_in'))
+    template = 'users/activate_failed.html'
+    context = {'user': user}
+    return render(request, template, context=context)

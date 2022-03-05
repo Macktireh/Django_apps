@@ -67,7 +67,7 @@ body {
   width: 400px;
   background: #f1f1f1;
   border-radius: 10px;
-  box-shadow: 0 0 5px #2691d9;
+  box-shadow: 0 0 5px #666666;
   margin: 1.5rem 0;
 }
 .form-container .title-form {
@@ -219,17 +219,17 @@ form .progressGreen {
 }
 
 .form-container-pass {
-  width: 75%;
+  width: 85%;
   background: #f1f1f1;
   border-radius: 10px;
-  box-shadow: 0 0 5px #2691d9;
-  margin: 1.5rem 0;
+  box-shadow: 0 0 5px #666666;
+  margin: 3rem 3rem;
 }
 
 .title-pass {
+  width: 100%;
   text-align: center;
   padding: 15px 0;
-  border-bottom: 1px solid silver;
 }
 .title-pass .p-info {
   text-align: left;
