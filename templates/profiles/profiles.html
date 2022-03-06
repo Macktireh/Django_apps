@@ -7,22 +7,33 @@
 
 {% block style %}
 <link rel="shortcut icon" href=" {% static 'profiles/img/favicon.png' %} " type="image/x-icon">
+<link rel="stylesheet" href=" {% static 'components/css/style.css' %}" />
 <link rel="stylesheet" href=" {% static 'profiles/css/style.css' %} " />
 {% endblock style %}
 
+<!-- Navbar -->
+{% block navbar %} {% include 'components/navbar2.html' %} {% endblock navbar %}
 
 {% block content %}
-<!-- Navbar -->
-<nav class="nav-bar">{% include 'components/navbar.html' %}</nav>
-
-<main class="main-home">
-  <h1>Hello depuis Profiles</h1>
+<main class="main-profile">
+  <section class="profile-info">
+    <h2>Section info</h2>
+  </section>
+  <section class="profile-description">
+    <h2>Section description</h2>
+  </section>
+  <section class="profile-experience">
+    <h2>Section experience</h2>
+  </section>
+  <section class="profile-formation">
+    <h2>Section formation</h2>
+  </section>
 </main>
-
-<!-- Footer -->
-<footer>{% include 'components/footer.html' %}</footer>
 {% endblock content %}
 
-{% block js %}
+<!-- Footer -->
+{% block footer %} {% include 'components/footer.html' %} {% endblock footer %}
 
+{% block js %}
+<script type="text/javascript" src=" {% static 'components/js/index.js' %} "></script>
 {% endblock js %}

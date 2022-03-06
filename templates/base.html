@@ -7,11 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   {% block style %} {% endblock style %}
   <title>{% block title %} {% endblock title %}</title>
+  <!-- Boxicons CSS -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
+  {% block navbar %} {% endblock navbar %}
+  <div class="body-container">
 
-  {% block content %} {% endblock content %}
+    {% block content %} {% endblock content %}
+
+  </div>
+  {% block footer %} {% endblock footer %}
 
   {% block js %} {% endblock js %}
 </body>

@@ -6,15 +6,15 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'pseudo', 'bio', 'birth_date', 'gender', 'adress', 'town', 'country',)
     # list_filter = ('gender',)
     fieldsets = (
-        # (User, {'fields': ('user')}),
+        (None, {'fields': ('user',)}),
         
-        (_('Personal info'), {'fields': ('pseudo', 'img_profile', 'birth_date', 'gender')}),
+        (_('Personal info'), {'fields': ('pseudo', 'bio', 'img_profile', 'img_bg', 'birth_date', 'gender',)}),
         
-        (_('Location'), {'fields': ('adress', 'town', 'country'),}),
+        (_('Location'), {'fields': ('adress', 'town', 'country',),}),
         # (_('User description'), {'fields': ('description', 'bio')}),
         
-        # (_('User description'), {'fields': ('description', '')}),
-        (_('Social network'), {'fields': ('link_linkedin', 'link_gitthub', 'link_twitter', 'link_mysite')}),
+        (_('Description'), {'fields': ('description',)}),
+        (_('Social network'), {'fields': ('link_linkedin', 'link_gitthub', 'link_twitter', 'link_mysite',)}),
     )
 
     # add_fieldsets = (

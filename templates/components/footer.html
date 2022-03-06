@@ -1,26 +1,28 @@
 {% load static %}
 
-<div class="footer-content">
-  <div class="footer-content-box">
-    <a class="footer-logo" href="{% url 'home' %}">
-      <img src="{% static 'home/img/logo2.png' %}" alt="logo Macktireh">
-    </a>
-  </div>
+<footer>
+  <div class="footer-content">
+    <div class="footer-content-box">
+      <a class="footer-logo" href="{% url 'home' %}">
+        <img src="{% static 'components/img/logo3.jpg' %}" alt="logo Macktireh">
+      </a>
+    </div>
 
-  <div class="footer-content-box ul-container">
-    <ul>
-      <li><a href="https://www.linkedin.com/in/macktireh/" target="_blank"><img
-            src="{% static 'home/img/linkedin.svg' %}" alt="Compte linkedin"></a></li>
-      <li><a href="https://github.com/Macktireh" target="_blank"><img class="ml"
-            src="{% static 'home/img/github.svg' %}" alt="Compte github"></a>
-      </li>
-      <li><a href="https://twitter.com/macktireh" target="_blank"><img src="{% static 'home/img/twitter.svg' %}"
-            alt="Compte twitter"></a>
-      </li>
-    </ul>
+    <div class="footer-content-box ul-container">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/macktireh/" target="_blank"><img
+              src="{% static 'home/img/linkedin.svg' %}" alt="Compte linkedin"></a></li>
+        <li><a href="https://github.com/Macktireh" target="_blank"><img class="ml"
+              src="{% static 'home/img/github.svg' %}" alt="Compte github"></a>
+        </li>
+        <li><a href="https://twitter.com/macktireh" target="_blank"><img src="{% static 'home/img/twitter.svg' %}"
+              alt="Compte twitter"></a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
-<!-- <hr>    -->
-<div class="footer-bottom">
-  <p>copyright &copy;2022 Macktireh Abdi Soubaneh | <a href="">Mentions légales</a></p>
-</div>
+  <!-- <hr>    -->
+  <div class="footer-bottom">
+    <p>copyright &copy;2022 Macktireh Abdi Soubaneh | <a href="">Mentions légales</a></p>
+  </div>
+</footer>

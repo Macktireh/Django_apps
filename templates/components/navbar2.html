@@ -1,0 +1,120 @@
+{% load static %}
+
+<div class="nav-container">
+  <div>
+    <a class="logo" href="{% url 'home' %}">
+      <img src=" {% static 'components/img/logo2.jpg' %} " alt="logo Macktireh">
+    </a>
+  </div>
+
+  <nav>
+    <ul class="nav-menu">
+      <a href="{% url 'home' %}" class="nav-item">
+        <div class="nav-text">
+          <img class="nav-img" src="{% static 'components/img/home.svg' %}" alt="">
+          <span class="animation {% if start_animation == 'home' %}start-animation{% endif %}"></span>
+          <span class="nav-text-span">Home</span>
+        </div>
+      </a>
+      {% if not user.is_authenticated %}
+      <a href="{% url 'sign_in' %}" class="nav-item">
+        <div class="nav-text">
+          <img class="nav-img" src="{% static 'components/img/user.svg' %}" alt="">
+          <span class="animation {% if start_animation == 'sign_in' %}start-animation{% endif %}"></span>
+          <span class="nav-text-span">Connexion</span>
+        </div>
+      </a>
+      <a href="{% url 'sign_up' %}" class="nav-item">
+        <div class="nav-text">
+          <img class="nav-img" src="{% static 'components/img/signup.svg' %}" alt="">
+          <span class="animation {% if start_animation == 'sign_up' %}start-animation{% endif %}"></span>
+          <span>S'inscrire</span>
+        </div>
+      </a>
+      {% else %}
+      <a href="{% url 'sign_up' %}" class="nav-item">
+        <div class="nav-text">
+          <img class="nav-img" src="{% static 'components/img/blog.svg' %}" alt="">
+          <span class="animation {% if start_animation == 'sign_up' %}start-animation{% endif %}"></span>
+          <span class="nav-text-span">Blog</span>
+        </div>
+      </a>
+      <a href="{% url 'sign_in' %}" class="nav-item">
+        <div class="nav-text">
+          <img class="nav-img" src="{% static 'components/img/heart.svg' %}" alt="">
+          <span class="animation {% if start_animation == 'sign_in' %}start-animation{% endif %}"></span>
+          <span class="nav-text-span">Projet</span>
+        </div>
+      </a>
+      <a href="{% url 'admin:index' %}" class="nav-item" target="_blank">
+        <div class="nav-text">
+          <img class="nav-img" src="{% static 'components/img/contact.svg' %}" alt="">
+          <span class="animation {% if start_animation == 'admin' %}start-animation{% endif %}}"></span>
+          <span class="nav-text-span">Contact</span>
+        </div>
+      </a>
+      {% if user.is_superuser %}
+      <a href="{% url 'admin:index' %}" class="nav-item" target="_blank">
+        <div class="nav-text">
+          <img class="nav-img" src="{% static 'components/img/contact.svg' %}" alt="">
+          <span class="animation {% if start_animation == 'admin' %}start-animation{% endif %}}"></span>
+          <span class="nav-text-span">Administration</span>
+        </div>
+      </a>
+      {% endif %}
+      <a href="{% url 'logout' %}" class="nav-item">
+        <div class="nav-text">
+          <img class="nav-img" src="{% static 'components/img/logout.svg' %}" alt="">
+          <span class="animation {% if start_animation == 'logout' %}start-animation{% endif %}"></span>
+          <span class="nav-text-span">Déconnexion</span>
+        </div>
+      </a>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+      <a href="  
+      {% if user.profile.pseudo %}
+      {% url 'profile'  pseudo=user.profile.pseudo %}
+      {% else %}
+      {% url 'profile'  pseudo=user.first_name %}
+      {% endif %}" class="nav-profil nav-profil-mobile">
+        <div class="nav-box-profil">
+          <img src="        
+          {% if user.profile.img_profile %}
+          {{ user.profile.img_profile.url }}
+          {% else %}
+          {% static 'components/img/user.svg' %}
+          {% endif %}" alt="">
+        </div>
+      </a>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <div class="hamburger">
+    <span class="hamburger__bar"></span>
+    <span class="hamburger__bar"></span>
+    <span class="hamburger__bar"></span>
+  </div>
+
+  {% if user.is_authenticated %}
+
+  <a href="  
+  {% if user.profile.pseudo %}
+  {% url 'profile'  pseudo=user.profile.pseudo %}
+  {% else %}
+  {% url 'profile'  pseudo=user.first_name %}
+  {% endif %}
+  " class="nav-profil nav-profil-ecran">
+    <div class="nav-box-profil">
+      <img src="        
+      {% if user.profile.img_profile %}
+      {{ user.profile.img_profile.url }}
+      {% else %}
+      {% static 'components/img/user.svg' %}
+      {% endif %}" alt="">
+    </div>
+  </a>
+  {% endif %}
+
+</div>

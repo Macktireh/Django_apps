@@ -1,5 +1,83 @@
-body {
-  background-color: #333;
+@import url("https://fonts.googleapis.com/css2?family=Baumans&family=Inconsolata:wght@300&family=Megrim&display=swap");
+*, ::after, ::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+*::selection {
+  background-color: #1abc9c;
+  color: #f1f1f1;
+}
+
+a {
+  text-decoration: none;
+  color: #f1f1f1;
+}
+
+a:visited {
+  color: #f1f1f1;
+}
+
+.flex-center, .main-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-profile {
+  width: 100%;
+  flex-direction: column;
+}
+
+.profile-info {
+  width: 100%;
+  margin-top: 18px;
+  height: 60vh;
+  background-color: #34495e;
+  box-shadow: 0 2px 3px 0 #0000001a;
+  border-radius: 8px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.profile-description {
+  width: 100%;
+  margin-top: 18px;
+  height: 60vh;
+  background-color: #34495e;
+  box-shadow: 0 2px 3px 0 #0000001a;
+  border-radius: 8px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.profile-experience {
+  width: 100%;
+  margin-top: 18px;
+  height: 60vh;
+  background-color: #34495e;
+  box-shadow: 0 2px 3px 0 #0000001a;
+  border-radius: 8px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.profile-formation {
+  width: 100%;
+  margin-top: 18px;
+  height: 60vh;
+  background-color: #34495e;
+  box-shadow: 0 2px 3px 0 #0000001a;
+  border-radius: 8px;
+  text-align: center;
+  padding-top: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

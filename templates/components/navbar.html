@@ -1,35 +1,36 @@
 {% load static %}
+<nav class="nav-bar">
+  <a class="logo" href="{% url 'home' %}">
+    <img src=" {% static 'home/img/logo.png' %} " alt="logo Macktireh">
+  </a>
 
-<a class="logo" href="{% url 'home' %}">
-  <img src=" {% static 'home/img/logo.png' %} " alt="logo Macktireh">
-</a>
+  <ul class="nav-menu">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Home</a>
+    </li>
 
-<ul class="nav-menu">
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'home' %}">Home</a>
-  </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+    </li>
+    {% if user.is_superuser %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Administration</a>
+    </li>
+    {% endif %}
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sign_in' %}">S'identifier</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a>
+    </li>
+    {% endif %}
+  </ul>
 
-  {% if user.is_authenticated %}
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
-  </li>
-  {% if user.is_superuser %}
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Administration</a>
-  </li>
-  {% endif %}
-  {% else %}
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'sign_in' %}">S'identifier</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'sign_up' %}">S'inscrire</a>
-  </li>
-  {% endif %}
-</ul>
-
-<div class="hamburger">
-  <span class="hamburger__bar"></span>
-  <span class="hamburger__bar"></span>
-  <span class="hamburger__bar"></span>
-</div>
+  <div class="hamburger">
+    <span class="hamburger__bar"></span>
+    <span class="hamburger__bar"></span>
+    <span class="hamburger__bar"></span>
+  </div>
+</nav>
