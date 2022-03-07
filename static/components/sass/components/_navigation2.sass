@@ -19,17 +19,19 @@ a.logo
     width: 180px
 
 nav
-  @include flex-el(space-between, center)
-  width: 800px
+  @include flex-el(center, center)
+  // width: 800px
   height: 100%
   font-size: 0
+  // background-color: #fff
 
 nav ul
   position: relative
-  @include flex-el(space-between, null)
+  @include flex-el(center, null)
   gap: 25px
   height: 100%
   width: 100%
+  //background-color: #fff
 
 nav ul a
   font-size: 15px
@@ -56,7 +58,7 @@ nav ul a
 
 .animation
   position: absolute
-  height: 5px
+  height: 4px
   bottom: 0
   z-index: 0
   background: $color3
@@ -122,16 +124,10 @@ nav ul a:hover
     border-radius: 8px
 
 @media screen and (max-width:1070px)
-  nav ul a
-    line-height: 10px
-    display: flex
-    justify-content: center
-    align-items: center
   .nav-text
     flex-direction: column
-    gap: 15px
-  .nav-text-span
-    line-height: 10px
+    line-height: 40px
+    gap: 5px
 
 @media screen and (max-width:798px)
   .hamburger
@@ -172,6 +168,9 @@ nav ul a:hover
     opacity: 0.95
     justify-content: start
     gap: 12px
+
+  nav ul a .nav-text
+    flex-direction: rows
 
   nav ul a:hover
     background: $color4

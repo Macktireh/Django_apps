@@ -16,18 +16,46 @@
 
 {% block content %}
 <main class="main-profile">
-  <section class="profile-info">
-    <h2>Section info</h2>
-  </section>
-  <section class="profile-description">
-    <h2>Section description</h2>
-  </section>
-  <section class="profile-experience">
-    <h2>Section experience</h2>
-  </section>
-  <section class="profile-formation">
-    <h2>Section formation</h2>
-  </section>
+  <div class="container-left">
+    <section class="profile-info">
+      <div class="container-info">
+        <div class="info-img-bg">
+          <img class="img_bg" src="{% if user.profile.img_bg %}
+          {{ user.profile.img_bg.url }}
+          {% else %}
+          {% static 'profiles/img/bg.png' %}
+          {% endif %}" alt="Couverture">
+        </div>
+        <!-- <div class="info-img-profile"> -->
+        <img class="img_profile" src="{% if user.profile.img_profile %}
+          {{ user.profile.img_profile.url }}
+          {% else %}
+          {% static 'components/img/user.svg' %}
+          {% endif %}" alt="Profile">
+        <!-- </div> -->
+        <div class="info-content">
+          <h2>{{user.first_name}} {{user.last_name}}</h2>
+          <p>{{user.profile.bio}}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-description">
+      <h2>Section description</h2>
+    </section>
+
+    <section class="profile-experience">
+      <h2>Section experience</h2>
+    </section>
+
+    <section class="profile-formation">
+      <h2>Section formation</h2>
+    </section>
+  </div>
+  <div class="container-right">
+    <aside class="asd-adresse"> test</aside>
+    <aside class="asd-rs"></aside>
+  </div>
 </main>
 {% endblock content %}
 

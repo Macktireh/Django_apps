@@ -32,14 +32,14 @@
         </div>
       </a>
       {% else %}
-      <a href="{% url 'sign_up' %}" class="nav-item">
+      <a href="{% url 'home1' %}" class="nav-item">
         <div class="nav-text">
           <img class="nav-img" src="{% static 'components/img/blog.svg' %}" alt="">
-          <span class="animation {% if start_animation == 'sign_up' %}start-animation{% endif %}"></span>
+          <span class="animation {% if start_animation == 'blog' %}start-animation{% endif %}"></span>
           <span class="nav-text-span">Blog</span>
         </div>
       </a>
-      <a href="{% url 'sign_in' %}" class="nav-item">
+      <!-- <a href="{% url 'sign_in' %}" class="nav-item">
         <div class="nav-text">
           <img class="nav-img" src="{% static 'components/img/heart.svg' %}" alt="">
           <span class="animation {% if start_animation == 'sign_in' %}start-animation{% endif %}"></span>
@@ -52,7 +52,7 @@
           <span class="animation {% if start_animation == 'admin' %}start-animation{% endif %}}"></span>
           <span class="nav-text-span">Contact</span>
         </div>
-      </a>
+      </a> -->
       {% if user.is_superuser %}
       <a href="{% url 'admin:index' %}" class="nav-item" target="_blank">
         <div class="nav-text">

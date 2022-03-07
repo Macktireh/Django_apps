@@ -10,3 +10,12 @@ def home(request):
         'profile': profile
     }
     return render(request, template, context=context)
+
+def home1(request):
+    profile = Profile.objects.all()
+    template = "profiles/profiles.html"
+    context = {
+        'start_animation': 'blog',
+        'profile': profile
+    }
+    return render(request, template, context=context)
