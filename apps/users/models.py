@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
         help_text=_("Specifies whether the user should verify their email address.")
     )
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = CustomUserManager()
 

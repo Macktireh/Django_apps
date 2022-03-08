@@ -10,7 +10,7 @@ class ProfileAdmin(admin.ModelAdmin):
         
         (_('Personal info'), {'fields': ('pseudo', 'bio', 'img_profile', 'img_bg', 'birth_date', 'gender',)}),
         
-        (_('Location'), {'fields': ('adress', 'town', 'country',),}),
+        (_('Location'), {'fields': ('adress', 'town', 'zipcode', 'country',),}),
         # (_('User description'), {'fields': ('description', 'bio')}),
         
         (_('Description'), {'fields': ('description',)}),
