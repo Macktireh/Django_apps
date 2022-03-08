@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.core.mail import send_mail, EmailMessage
 from django.urls import reverse
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-from django.utils.encoding import force_bytes, force_text
+from django.utils.encoding import force_bytes, force_str
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 
@@ -34,7 +34,7 @@ def sign_up(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            messages.success(request, "Votre compte à été bien avec succès. Vous recevez un email pour confirmer votre adresse email.")
+            messages.success(request, "Votre compte à été bien creér avec succès. Vous recevez un email pour confirmer votre adresse email.")
             current_site = get_current_site(request)
             
             # mail de bienvenue
@@ -85,7 +85,7 @@ def user_logout(request):
 
 def activate_user(request, uidb64, token):
     try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
+        uid = force_str(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
     except Exception as e:
         user = None
